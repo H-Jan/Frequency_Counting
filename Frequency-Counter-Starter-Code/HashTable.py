@@ -72,7 +72,9 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    pass
+    for i in self.arr:
+      i.print_nodes()
+
 
 
 
