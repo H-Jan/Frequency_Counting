@@ -7,7 +7,7 @@ class HashTable:
     self.arr = self.create_arr(size)
 
 
-  # 1️⃣ TODO: Complete the create_arr method.
+  # 1Complete the create_arr method.
 
   # Each element of the hash table (arr) is a linked list.
   # This method creates an array (list) of a given size and populates each of its elements with a LinkedList object.
@@ -16,30 +16,29 @@ class HashTable:
 #Method creates an array named list of a given size and populates each of its elements with a LinkedList object. 
   def create_arr(self, size):
     list_array = []
-
-      for i in range(size): 
+    
+    for i in range(size): 
        #Using an iterative solution
         updated_linkedlist = LinkedList()
         list_array.append(updated_linkedlist)
-      return list_array
+    return list_array
 
 
+    #Create your own hash function.
+# Hash functions are a function that turns each of these keys into an index value that we can use to decide where in our list each key:value pair should be stored. 
 
-  
-
-
-
-
-  # 2️⃣ TODO: Create your own hash function.
-
-  # Hash functions are a function that turns each of these keys into an index value that we can use to decide where in our list each key:value pair should be stored. 
-
+  #Creating own Hash function method. Hash functions are functions that turn each of 
+  #these keys into an index value that we can use to decide WHERE in our list each key:value pain
+  #should be stored. Recall consolidation example
   def hash_func(self, key):
-    
-    pass
-
-
-  # 3️⃣ TODO: Complete the insert method.
+    #Should be similar to example Joi gave regarding the length of each word
+    first_letter = key[0]
+    distance_fron_letter_a = ord(first_letter) - ord('a')
+    #ord must be one letter only or return error
+    #Greater the distance, farther away
+    index = distance_fron_letter_a % self.size 
+    return index
+  #Complete the insert method.
 
   # Should insert a key value pair into the hash table, where the key is the word and the value is a counter for the number of times the word appeared. When inserting a new word in the hash table, be sure to check if there is a Node with the same key in the table already.
 
@@ -49,7 +48,7 @@ class HashTable:
 
 
 
-  # 4️⃣ TODO: Complete the print_key_values method.
+  # Complete the print_key_values method.
 
   # Traverse through the every Linked List in the table and print the key value pairs.
 
