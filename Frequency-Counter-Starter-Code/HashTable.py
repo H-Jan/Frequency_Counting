@@ -33,12 +33,13 @@ class HashTable:
   def hash_func(self, key):
     #Should be similar to example Joi gave regarding the length of each word
     first_letter = key[0]
-    distance_fron_letter_a = ord(first_letter) - ord('a')
+    first_letter_location = ord(first_letter)
     #ord must be one letter only or return error
     #Greater the distance, farther away
-    index = distance_fron_letter_a % self.size 
+    index = distance_between_letters % self.size 
     return index
   #Complete the insert method.
+  ## I believe the issue with last function was a typo. 
 
   # Should insert a key value pair into the hash table, where the key is the word and the value is a counter for the number of times the word appeared. When inserting a new word in the hash table, be sure to check if there is a Node with the same key in the table already.
 
@@ -50,15 +51,14 @@ class HashTable:
     hash_key = self.hash_func(key)
     #find the index of the key-value pair to place by finding key
     linked_list = self.arr[hash_key]
-    linked_list_index = linked_list.find(key)
+    list_found = linked_list.find(key)
     #This finds the place in index of key-value pair and checks if the index is still available
     #If the item is not in our linked_list, we must create a tuple to append to our linked list
-    #Use of Tuple taken from StackOverflow 
-    our_tuple = (key, value)
-    if linked_list.find(key) == -1:
-      linked_list.append(our_tuple)
-    else: 
-      linked_list.update(our_tuple)
+    if found == -1:
+      our_pair = (key, value)
+      self.arr[hash_key].append(item)
+      #Proper tuple to fix issue
+
 
   # Complete the print_key_values method.
 
@@ -72,9 +72,18 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    for i in self.arr:
-      i.print_nodes()
-
+    #Below is as shown in LinkedList.py example
+    for idx in self.arr:
+      current = idx.head
+      if current == None:
+        pass
+      #According to example, we do not want to show any without value
+      else: 
+        for i in range(idx.length()):
+          print(f'{current.data[0]} : {current.data[1]}')
+          #Showing the Key and its respective value
+          current = current.next
+          #iterate through the list 
 
 
 
